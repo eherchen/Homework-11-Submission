@@ -35,17 +35,26 @@
                 <form>
                   <div class="form-group">
                     <ul class="list-group" id="filters">
-                      <li class="filter list-group-item">
-                        <label for="date">
-                        <select id="selDataset" onchange="getData(this.value)">
-                          <option value="dataset1">Enter a Date/Time</option>
-                          <option value="dataset2">Enter a City</option>
-                          <option value="dataset3">Enter a State</option>
-                          <option value="dataset4">Enter a Country</option>
-                          <option value="dataset5">Enter a Shape</option>
-                        </select></label>
-                        <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
-                      </li>
+                        <li class="filter list-group-item">
+                            <label for="date">Filter by Date</label>
+                            <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
+                          </li>
+                          <li class="filter list-group-item">
+                            <label for="date">Filter by City</label>
+                            <input class="form-control" id="city" type="text" placeholder="city">
+                          </li>
+                          <li class="filter list-group-item">
+                            <label for="date">Filter by State</label>
+                            <input class="form-control" id="state" type="text" placeholder="ca">
+                          </li>
+                          <li class="filter list-group-item">
+                            <label for="date">Filter by Country</label>
+                            <input class="form-control" id="country" type="text" placeholder="country">
+                          </li>
+                          <li class="filter list-group-item">
+                            <label for="date">Filter by Shape</label>
+                            <input class="form-control" id="shape" type="text" placeholder="shape">
+                          </li>
                     </ul>
                   </div>
                   <button id="filter-btn" type="submit" class="btn btn-default">Filter Table</button>

@@ -2,12 +2,8 @@
 var tableData = data;
 var table = d3.select("#table-area");
 var tbody = table.select("tbody");
-// YOUR CODE HERE!
-// Write code that appends a table to your web page and then adds new rows of data for each UFO sighting.
-// Make sure you have a column for date/time, city, state, country, shape, 
-// and comment at the very least.
-// Use a date form in your HTML document and write JavaScript code that will listen for events 
-// and search through the date/time column to find rows that match user input.
+
+
 
 // Create empty arrays to store the object values
 var datetime = [];
@@ -18,7 +14,7 @@ var shape = [];
 var durationMinutes = [];
 var comments = [];
 
-
+// Reset the arrays back to empty before filtering so the population from previous filter is removed
 function tableFilter(arr){
     tbody.html("")
     datetime= []; 
@@ -29,7 +25,7 @@ function tableFilter(arr){
     durationMinutes= []; 
     comments = [];
 
-// Iterate through each object
+// Build/Return the arrays by iterating through each object
 arr.forEach((row) => {
     // console.log(row);
     Object.entries(row).forEach(([key, value]) => {
@@ -60,6 +56,7 @@ arr.forEach((row) => {
 buildTable(datetime, city, state, country, shape, durationMinutes, comments);
 }
 
+// Export the data into the html table element
 function buildTable(datetime, city, state, country, shape, durationMinutes, comments) {
     var trow;
     for (var i = 0; i < datetime.length; i++) {
@@ -75,36 +72,26 @@ function buildTable(datetime, city, state, country, shape, durationMinutes, comm
   }
 
 
+  var inputField = d3.select("#filter-btn");
 
-
-
-var inputField = d3.select("#filter-btn");
-
-switch (inputField) {
-case "dataset1":
-    inputField.on("click", function() {
-        d3.event.preventDefault();
-        var newText = d3.select("#datetime");
-        var inputValue = newText.property("value");
-        // alert('you clicked me');
-        console.log(inputValue);
-        var filteredTable = tableData.filter(returnRow => returnRow.datetime === inputValue);
-        tableFilter(filteredTable);
-    });
-    break;
-case "dataset2":
-    inputField.on("click", function() {
-        d3.event.preventDefault();
-        var newText = d3.select("#datetime");
-        var inputValue = newText.property("value");
-        // alert('you clicked me');
-        console.log(inputValue);
-        var filteredTable = tableData.filter(returnRow => returnRow.city === inputValue);
-        tableFilter(filteredTable);
-    });
-    break;
-}
-
-
-tableFilter(tableData);
-
+  inputField.on("click", function() {
+      d3.event.preventDefault();
+      var inputValueDate = d3.select("#datetime").property("value");
+      var inputValueCity = d3.select("#city").property("value");
+      var inputValueState = d3.select("#state").property("value");
+      var inputValueCountry = d3.select("#country").property("value");
+      var inputValueShape = d3.select("#shape").property("value");
+    //   var newText = d3.select("#datetime");
+    //   var inputValue = newText.property("value");
+    //   console.log(inputValue);
+      var filteredTable = tableData.filter(returnRow => returnRow.datetime === inputValueDate ||
+        returnRow.city === inputValueCity ||
+        returnRow.state === inputValueState ||
+        returnRow.country === inputValueCountry ||
+        returnRow.shape === inputValueShape        
+        );
+      tableFilter(filteredTable);
+  });
+  
+  tableFilter(tableData);
+  
