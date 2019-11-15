@@ -5,6 +5,7 @@ Data bootcamp assignment to Create an HTML web page using a UFO dataset provided
 
 
 Visualization include:  Searchable, Sortable data table of UFO sightings
+
 Tools Used: Javascript, HTML
 
 
